@@ -38,6 +38,9 @@ body {
   border: 1px solid var(--stroke-s-200, #616161);
   background: var(--grey-g-200, #303030);
 }
+.searchBar:hover {
+  border: 1px solid var(--stroke-s-100, #e1e1e1);
+}
 
 .searchBar > input {
   background: transparent;
@@ -49,11 +52,13 @@ body {
   width: 100%;
 }
 
+.searchBar:focus-within {
+  border: 2px solid var(--White, #fff);
+}
 .menuR {
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
 }
 
 .menuR > .notif-box {
@@ -64,6 +69,15 @@ body {
   gap: 8px;
   border-radius: 8px;
   background: var(--grey-grey-200, #303030);
+  cursor: pointer;
+}
+
+.notif-box:hover {
+  background: var(--font-mid-2, #616161);
+}
+
+.notif-box::-moz-focus-outer {
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .menuR > .profile-box {
@@ -76,10 +90,15 @@ body {
   font-size: 12px;
   font-weight: 500;
   color: var(--font-light, #e3e3e3);
+  cursor: pointer;
 }
 
-.profile-box > .name {
-  text-wrap: nowrap;  
+.profile-box:hover {
+  background: var(--font-mid-2, #616161);
+}
+
+.profile-box .name {
+  text-wrap: nowrap;
 }
 
 .profile-box > .initials {
@@ -103,10 +122,6 @@ body {
     font-size: 12px;
     font-weight: 500;
     color: var(--font-light, #e3e3e3);
-  }
-
-  .profile-box > .name {
-    display: hidden;
   }
 
   .menuR > .notif-box {
