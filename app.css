@@ -53,6 +53,10 @@ body {
   width: 100%;
 }
 
+.searchBar:active {
+  border: 2px solid var(--White, #fff);
+}
+
 .searchBar:focus-within {
   border: 2px solid var(--White, #fff);
 }
@@ -75,10 +79,6 @@ body {
 
 .notif-box:hover {
   background: var(--font-mid-2, #616161);
-}
-
-.notif-box::-moz-focus-outer {
-  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .menuR > .profile-box {
@@ -178,6 +178,12 @@ body {
   background: var(--White, #fff);
   box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #fff,
     0px -1px 0px 0px #b5b5b5 inset;
+}
+
+.trial-plan:active {
+  border: 1px solid transparent;
+  background: #f7f7f7;
+  box-shadow: 0px 2px 1.5px 0px #e2e2e2 inset;
 }
 
 .trial > .cancel {
