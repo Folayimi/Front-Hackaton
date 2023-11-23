@@ -36,7 +36,6 @@ body {
   right: 16px;
   display: flex;
   width: 320px;
-  height: 200px;
   padding: 6px 0px;
   flex-direction: column;
   align-items: flex-start;
@@ -45,6 +44,49 @@ body {
   border: 1px solid var(--stroke-s-50, #dbdbdb);
   background: var(--White, #fff);
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  font-size: 13px;
+  color: #303030;
+}
+.brand-menu > .cnt {
+  width: 100%;
+  padding: 0px 6px;
+}
+
+.brand-menu > .cnt #dc {
+  justify-content: space-between;
+  padding: 4px 12px 4px 8px;
+  align-self: stretch;
+}
+
+.brand-menu > .cnt #dm {
+  flex-direction: column;
+  gap: 0px;
+  padding: 8px;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  color: var(--grey-grey-100, var(--font-mid-2, #616161));
+  font-size: 12px;
+}
+
+.brand-menu li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.brand-menu li:hover {
+  background: var(--states-hover, #f1f1f1);
+}
+
+.brand-menu li:active {
+  background: var(--states-hover, #f1f1f1);
 }
 
 .searchBar {
@@ -122,9 +164,9 @@ body {
   text-wrap: nowrap;
 }
 
-.profile-box > .initials {
+.initials {
   display: flex;
-  padding: 10px;
+  padding: 8px 10px;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
