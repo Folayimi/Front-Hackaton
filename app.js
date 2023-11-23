@@ -1,16 +1,14 @@
 // Your javascript goes here
 const BrandLogo = document.getElementById("brand-logo");
 const Name = document.getElementById("nameCtn");
-const SearchBox = document.getElementById("search-box");
 const NotificationBox = document.getElementById("notif-box");
 const ProfileBox = document.getElementById("profile-box");
 const Bar = document.getElementById("bar");
 const Banner = document.getElementById("plan-banner");
 const Cancel = document.getElementById("cancel");
-const Plan = document.getElementsByClassName("trial-plan");
-let progress = 1;
+let Progress = 1;
 
-Bar.style.width = `${(progress / 5) * 100}%`;
+Bar.style.width = `${(Progress / 5) * 100}%`;
 
 if (window.innerWidth < 768) {
   Name.style.display = "none";
@@ -31,11 +29,6 @@ window.addEventListener("resize", () => {
       "https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg";
   }
 });
-
-// SearchBox.addEventListener("mousedown", () => {
-//   console.log("pressed");
-//   SearchBox.style.border = "2px solid var(--White, #fff)";
-// });
 
 NotificationBox.addEventListener("click", () => {
   NotificationBox.style.background = "var(--font-mid-2, #616161)";
@@ -58,16 +51,3 @@ ProfileBox.addEventListener("click", () => {
 Cancel.addEventListener("click", () => {
   Banner.style.display = "none";
 });
-
-for (let i = 0; i < Plan.length; i++) {
-  Plan[i].addEventListener("mousedown", () => {
-    Plan[i].style.background = "#F7F7F7";
-    Plan[i].style.boxShadow = "0px 2px 1.5px 0px #E2E2E2 inset";
-    return (
-      Plan[i].style.removeEventListener("mousedown", () => {
-        Plan[i].style.background = "#F7F7F7";
-        Plan[i].style.boxShadow = "0px 2px 1.5px 0px #E2E2E2 inset";
-      })
-    )
-  });
-}
