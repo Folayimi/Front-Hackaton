@@ -63,15 +63,11 @@ for (let i = 0; i < Plan.length; i++) {
   Plan[i].addEventListener("mousedown", () => {
     Plan[i].style.background = "#F7F7F7";
     Plan[i].style.boxShadow = "0px 2px 1.5px 0px #E2E2E2 inset";
-    return(
-        null
+    return (
+      Plan[i].style.removeEventListener("mousedown", () => {
+        Plan[i].style.background = "#F7F7F7";
+        Plan[i].style.boxShadow = "0px 2px 1.5px 0px #E2E2E2 inset";
+      })
     )
-  });
-}
-
-for (let i = 0; i < Plan.length; i++) {
-  Plan[i].addEventListener("mousedown", () => {
-    Plan[i].style.background = "#F7F7F7";
-    Plan[i].style.boxShadow = "0px 2px 1.5px 0px #E2E2E2 inset";
   });
 }
