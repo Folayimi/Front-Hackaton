@@ -12,6 +12,45 @@ const ShowBrandMenu = false;
 const ShowNotificationMenu = false;
 let Progress = 1;
 
+const PersonlizedGuide = [
+  {
+    title: "Customize your online store",
+    description:
+      "Choose a theme and add your logo, colors, and images to reflect your brand.",
+    img: "https://crushingit.tech/hackathon-assets/customise-store.png",
+    button1: "Customize theme",
+  },
+  {
+    title: "Add your first product",
+    description:
+      "Write a description, add photos, and set pricing for the products you plan to sell.",
+    img: "https://crushingit.tech/hackathon-assets/product.png",
+    button1: "Add ptoduct",
+    button2: "Import product",
+  },
+  {
+    title: "Add a custom domain",
+    description:
+      "Your current domain is 222219.myshopify.com but you can add a custom domain to help customers find your online store.",
+    img: "https://crushingit.tech/hackathon-assets/website.png",
+    button1: "Add domain",
+  },
+  {
+    title: "Name your store",
+    description:
+      "Your temporary store name is currently Davii collections. The store name appears in your admin and your online store.",
+    img: "https://crushingit.tech/hackathon-assets/name-store.png",
+    button1: "Name store",
+  },
+  {
+    title: "Set up a payment provider",
+    description:
+      "Choose a payment provider to start accepting payments. You’ll need to create an account with the payment provider and set it up with your Shopify store.",
+    img: "https://crushingit.tech/hackathon-assets/payment.png",
+    button1: "Set up payment",
+  },
+];
+
 Bar.style.width = `${(Progress / 5) * 100}%`;
 
 if (window.innerWidth < 768) {
@@ -34,13 +73,7 @@ window.addEventListener("resize", () => {
   }
 });
 
-NotificationBox.addEventListener("click", (e) => {
-  //   if (NotificationBox.classList.contains("notif-box")) {
-  //     NotificationBox.setAttribute("class", "notif-box-focus");
-  //   } else {
-  //     NotificationBox.setAttribute("class", "notif-box");
-  //   }
-
+NotificationBox.addEventListener("click", () => {
   if (NotificationMenu.style.display === "none") {
     NotificationMenu.style.display = "flex";
   } else {
@@ -71,13 +104,6 @@ document.getElementById("brand-menu").addEventListener("keydown", function (e) {
 });
 
 ProfileBox.addEventListener("click", () => {
-  //   if (window.innerWidth >= 768) {
-  //     if (ProfileBox.classList.contains("profile-box")) {
-  //       ProfileBox.setAttribute("class", "profile-box-focus");
-  //     } else {
-  //       ProfileBox.setAttribute("class", "profile-box");
-  //     }
-  //   }
   if (BrandMenu.style.display === "none") {
     BrandMenu.style.display = "flex";
   } else {
