@@ -35,11 +35,11 @@ window.addEventListener("resize", () => {
 });
 
 NotificationBox.addEventListener("click", (e) => {
-  if (NotificationBox.classList.contains("notif-box")) {
-    NotificationBox.setAttribute("class", "notif-box-focus");
-  } else {
-    NotificationBox.setAttribute("class", "notif-box");
-  }
+  //   if (NotificationBox.classList.contains("notif-box")) {
+  //     NotificationBox.setAttribute("class", "notif-box-focus");
+  //   } else {
+  //     NotificationBox.setAttribute("class", "notif-box");
+  //   }
 
   if (NotificationMenu.style.display === "none") {
     NotificationMenu.style.display = "flex";
@@ -54,14 +54,30 @@ NotificationBox.addEventListener("click", (e) => {
   }
 });
 
-ProfileBox.addEventListener("click", () => {
-  if (window.innerWidth >= 768) {
-    if (ProfileBox.classList.contains("profile-box")) {
-      ProfileBox.setAttribute("class", "profile-box-focus");
-    } else {
-      ProfileBox.setAttribute("class", "profile-box");
-    }
+document.getElementById("brand-menu").addEventListener("keydown", function (e) {
+  const focusableItems = document.querySelectorAll('.cnt li[tabindex="0"]');
+  let currentIndex = Array.from(focusableItems).indexOf(document.activeElement);
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    currentIndex = (currentIndex + 1) % focusableItems.length;
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    currentIndex =
+      (currentIndex - 1 + focusableItems.length) % focusableItems.length;
   }
+
+  focusableItems[currentIndex].focus();
+});
+
+ProfileBox.addEventListener("click", () => {
+  //   if (window.innerWidth >= 768) {
+  //     if (ProfileBox.classList.contains("profile-box")) {
+  //       ProfileBox.setAttribute("class", "profile-box-focus");
+  //     } else {
+  //       ProfileBox.setAttribute("class", "profile-box");
+  //     }
+  //   }
   if (BrandMenu.style.display === "none") {
     BrandMenu.style.display = "flex";
   } else {
