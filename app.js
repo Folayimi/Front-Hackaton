@@ -8,9 +8,11 @@ const Banner = document.getElementById("plan-banner");
 const Cancel = document.getElementById("cancel");
 const BrandMenu = document.getElementById("brand-menu");
 const NotificationMenu = document.getElementById("notif-menu");
+const Plan = document.getElementById("trial-plan");
+const Guide = document.getElementById("guide");
 const ShowBrandMenu = false;
 const ShowNotificationMenu = false;
-let Progress = 1;
+let Progress = 0;
 
 const PersonlizedGuide = [
   {
@@ -50,8 +52,6 @@ const PersonlizedGuide = [
     button1: "Set up payment",
   },
 ];
-
-Bar.style.width = `${(Progress / 5) * 100}%`;
 
 if (window.innerWidth < 768) {
   Name.style.display = "none";
@@ -119,4 +119,16 @@ ProfileBox.addEventListener("click", () => {
 
 Cancel.addEventListener("click", () => {
   Banner.style.display = "none";
+});
+
+Plan.addEventListener("click", () => {
+  window.open("https://www.shopify.com/pricing");
+});
+
+Bar.style.width = `${(Progress / 5) * 100}%`;
+
+PersonlizedGuide.map((item, i) => {
+  const guide_step = document.createElement("li");
+  guide_step.className = "guide-step";
+  guide_step.appendChild();
 });

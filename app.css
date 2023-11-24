@@ -47,7 +47,7 @@ body {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
   font-weight: 400;
   font-size: 13px;
-  color: #303030;
+  color: var(--font-dark, var(--grey-g-200, #303030));
 }
 
 @media screen and (max-width: 360px) {
@@ -99,6 +99,7 @@ body {
   padding: 4px 12px 4px 8px;
   align-self: stretch;
   background: var(--states-hover, #f1f1f1);
+  margin-bottom: 4px;
 }
 
 .brand-menu > .cnt #dm {
@@ -120,7 +121,6 @@ body {
   width: 100%;
   padding: 8px;
   border-radius: 8px;
-  gap: 8px;
   cursor: pointer;
   border: 2px solid transparent;
 }
@@ -136,6 +136,15 @@ body {
 .brand-menu li:focus {
   border: 2px solid var(--states-focused, #005bd3);
   outline: none;
+}
+
+.brand-menu li > a {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+  gap: 8px;
 }
 
 .searchBar {
@@ -300,6 +309,11 @@ body {
   outline: none;
 }
 
+.trial-plan a {
+  text-decoration: none;
+  color: var(--font-dark, #323232);
+}
+
 .trial-plan:hover {
   background: #f7f7f7;
   box-shadow: 0px -1px 0px 0px #b5b5b5 inset;
@@ -376,8 +390,7 @@ body {
   width: 72px;
   height: 4px;
   background: #e3e3e3;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+  border-radius: 2px;
 }
 
 .top > .chevron {
@@ -385,6 +398,37 @@ body {
   padding: 4px;
   align-items: flex-start;
   cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.top > .chevron:focus {
+  background: #e3e3e3;
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #fff;
+}
+
+.top > .chevron:hover {
+  background: #e3e3e3;
+}
+
+.setup-guide > .guide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.guide > .guide-step {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--font-dark, var(--grey-g-200, #303030));
 }
 
 @media screen and (max-width: 768px) {
