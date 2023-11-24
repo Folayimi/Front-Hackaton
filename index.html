@@ -113,9 +113,21 @@
               />
             </svg>
           </button>
-          <button class="profile-box" id="profile-box">
-            <div class="brand-menu" style="display: none" id="brand-menu">
-              <ul class="cnt" role="menu">
+          <button
+            class="profile-box"
+            id="profile-box"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="brand-menu"
+          >
+            <div
+              class="brand-menu"
+              style="display: none"
+              aria-labelledby="profile-box"
+              role="menu"
+              id="brand-menu"
+            >
+              <ul class="cnt">
                 <li tabindex="0" id="dc">
                   <div
                     style="
@@ -144,8 +156,8 @@
                     />
                   </svg>
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com"
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com"
                     ><svg
                       width="20"
                       height="20"
@@ -171,20 +183,28 @@
                 "
               ></div>
               <ul class="cnt">
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Help Center</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com"
+                    >Help Center</a
+                  >
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Changelog</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com">Changelog</a>
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Community forums</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com"
+                    >Community forums</a
+                  >
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Hire a Shopify Partner</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com"
+                    >Hire a Shopify Partner</a
+                  >
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Keyboard shortcuts</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com"
+                    >Keyboard shortcuts</a
+                  >
                 </li>
               </ul>
               <div
@@ -206,11 +226,13 @@
                   </p>
                   <p>davidmicheal@gmail.com</p>
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Manage account</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com"
+                    >Manage account</a
+                  >
                 </li>
-                <li tabindex="0">
-                  <a href="https://admin.shopify.com">Log out</a>
+                <li>
+                  <a tabindex="0" href="https://admin.shopify.com">Log out</a>
                 </li>
               </ul>
             </div>

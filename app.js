@@ -94,13 +94,15 @@ NotificationBox.addEventListener("click", () => {
 });
 
 document.getElementById("brand-menu").addEventListener("keydown", function (e) {
-  const focusableItems = document.querySelectorAll('.cnt li[tabindex="0"]');
+  const focusableItems = document.querySelectorAll(
+    '.cnt a[tabindex="0"], li[tabindex="0"]'
+  );
   let currentIndex = Array.from(focusableItems).indexOf(document.activeElement);
 
-  if (e.key === "ArrowDown") {
+  if (e.key === "ArrowDown" || e.key === "ArrowRight") {
     e.preventDefault();
     currentIndex = (currentIndex + 1) % focusableItems.length;
-  } else if (e.key === "ArrowUp") {
+  } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
     e.preventDefault();
     currentIndex =
       (currentIndex - 1 + focusableItems.length) % focusableItems.length;

@@ -119,10 +119,12 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 8px;
-  border-radius: 8px;
   cursor: pointer;
   border: 2px solid transparent;
+  outline: none;
+  border-radius: 8px;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+  gap: 8px;
 }
 
 .brand-menu li:hover {
@@ -138,11 +140,29 @@ body {
   outline: none;
 }
 
-.brand-menu li > a {
-  text-decoration: none;
-  width: 100%;
+.brand-menu a:hover {
+  background: var(--states-hover, #f1f1f1);
+}
+
+.brand-menu a:active {
+  background: var(--states-hover, #f1f1f1);
+}
+
+.brand-menu a:focus {
+  border: 2px solid var(--states-focused, #005bd3);
+  outline: none;
+}
+
+.brand-menu a {
   display: flex;
   align-items: center;
+  width: 100%;
+  transition: 0.3s;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  outline: none;
   color: var(--font-dark, var(--grey-g-200, #303030));
   gap: 8px;
 }
@@ -416,7 +436,7 @@ body {
 .setup-guide > .guide {
   display: flex;
   flex-direction: column;
-  width: 100%;  
+  width: 100%;
 }
 
 .guide > .guide-step {
