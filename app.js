@@ -24,6 +24,7 @@ const PersonlizedGuide = [
     img: "https://crushingit.tech/hackathon-assets/customise-store.png",
     button1: "Customize theme",
     active: false,
+    circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
   },
   {
     title: "Add your first product",
@@ -33,6 +34,7 @@ const PersonlizedGuide = [
     button1: "Add ptoduct",
     button2: "Import product",
     active: false,
+    circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
   },
   {
     title: "Add a custom domain",
@@ -41,6 +43,7 @@ const PersonlizedGuide = [
     img: "https://crushingit.tech/hackathon-assets/website.png",
     button1: "Add domain",
     active: false,
+    circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
   },
   {
     title: "Name your store",
@@ -49,6 +52,7 @@ const PersonlizedGuide = [
     img: "https://crushingit.tech/hackathon-assets/name-store.png",
     button1: "Name store",
     active: false,
+    circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
   },
   {
     title: "Set up a payment provider",
@@ -57,6 +61,7 @@ const PersonlizedGuide = [
     img: "https://crushingit.tech/hackathon-assets/payment.png",
     button1: "Set up payment",
     active: false,
+    circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
   },
 ];
 
@@ -188,12 +193,21 @@ const createGuide = (item, index, Track, guide_step) => {
     title.innerHTML = item.title;
     const description = document.createElement("p");
     description.innerHTML = item.description;
+    const more = document.createElement("a");
+    more.innerHTML = " Learn more";
+    more.className = "learn-more";            
+    more.href = "https://help.shopify.com/en/manual/domains";
+    description.appendChild(more);
     const button_comp = document.createElement("div");
     button_comp.className = "button-comp";
     const button1 = document.createElement("button");
     button1.className = "button1";
     button1.innerHTML = item.button1;
-    left.appendChild(createSVG());
+    const image = document.createElement("img");
+    image.src = item.circle;
+    image.width = "100%";
+    image.className = "dashed-circle";
+    left.appendChild(image);
     left_content.appendChild(title);
     left_content.appendChild(description);
     left_content.appendChild(button_comp);
@@ -214,7 +228,11 @@ const createGuide = (item, index, Track, guide_step) => {
     guide_step.className = "guide-step";
     const title = document.createElement("p");
     title.innerHTML = item.title;
-    guide_step.appendChild(createSVG());
+    const image = document.createElement("img");
+    image.src = item.circle;
+    image.width = "100%";
+    image.className = "dashed-circle";
+    guide_step.appendChild(image);
     guide_step.appendChild(title);
   }
 };

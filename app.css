@@ -1,10 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Inter;
+  --font-inter: "Inter", sans-serif;
   box-sizing: border-box;
 }
 body {
+  font-family: var(--font-inter);
   background: #f1f1f1;
 }
 
@@ -451,6 +452,12 @@ body {
   cursor: pointer;
 }
 
+.guide-step > .dashed-circle {
+  filter: invert(50%);
+  width: 24px;
+  cursor: pointer;
+}
+
 .guide > .guide-step-active {
   display: flex;
   padding: 8px 8px 12px 8px;
@@ -460,11 +467,17 @@ body {
   border-radius: 10px;
   background: #f3f3f3;
   align-self: stretch;
+}
+
+.guide-step-active .dashed-circle {
+  filter: invert(50%);
+  width: 24px;
   cursor: pointer;
 }
 
 .guide-step-active > .left {
   display: flex;
+  align-items: start;
   width: 70%;
   gap: 8px;
 }
@@ -476,6 +489,13 @@ body {
   font-size: 13px;
   font-weight: 500;
   color: var(--font-mid-2, #616161);
+}
+
+.left-content .learn-more {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--states-focused, #005bd3);
+  font-size: 14px;  
 }
 
 .left-content h3 {
@@ -521,6 +541,34 @@ body {
   background: #404040;
   box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 3px #fff,
     0px 0px 0px 1.5px #333;
+}
+
+.button-comp > .button2 {
+  display: inline-flex;
+  padding: 6px 12px;
+  align-items: center;
+  gap: 8px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--font-dark, #323232);
+}
+
+.button-comp > .button2:hover {
+  background: #e7e7e7;
+}
+
+.button-comp > .button2:active {
+  background: #e0e0e0;
+}
+
+.button-comp > .button2:focus {
+  border: 2px solid var(--states-focused, #005bd3);
+  background: #fff;
 }
 
 @media screen and (max-width: 768px) {
