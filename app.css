@@ -452,10 +452,23 @@ body {
   cursor: pointer;
 }
 
-.guide-step > .dashed-circle {
-  filter: invert(50%);
-  width: 24px;
+.guide-step .dashed-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px dashed #8a8a8a;
+  border-style: dashed;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.guide-step .dashed-circle:hover {
+  border: 2px solid #8a8a8a;
+}
+
+.guide-step > .dashed-circle:active {
+  background: #e3e3e3;
 }
 
 .guide > .guide-step-active {
@@ -470,9 +483,22 @@ body {
 }
 
 .guide-step-active .dashed-circle {
-  filter: invert(50%);
   width: 24px;
+  height: 22px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px dashed #8a8a8a;
+  border-style: dashed;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.guide-step-active .dashed-circle:hover {
+  border: 2px solid #8a8a8a;
+}
+
+.guide-step-active .dashed-circle:active {
+  background: #e3e3e3;
 }
 
 .guide-step-active > .left {
@@ -495,10 +521,11 @@ body {
   cursor: pointer;
   text-decoration: none;
   color: var(--states-focused, #005bd3);
-  font-size: 14px;  
+  font-size: 14px;
 }
 
 .left-content h3 {
+  font-size: 13px;
   font-weight: 600;
   color: var(--font-dark, var(--grey-g-200, #303030));
 }

@@ -25,16 +25,18 @@ const PersonlizedGuide = [
     button1: "Customize theme",
     active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
+    checked: false,
   },
   {
     title: "Add your first product",
     description:
       "Write a description, add photos, and set pricing for the products you plan to sell.",
     img: "https://crushingit.tech/hackathon-assets/product.png",
-    button1: "Add ptoduct",
+    button1: "Add product",
     button2: "Import product",
     active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
+    checked: false,
   },
   {
     title: "Add a custom domain",
@@ -44,6 +46,7 @@ const PersonlizedGuide = [
     button1: "Add domain",
     active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
+    checked: false,
   },
   {
     title: "Name your store",
@@ -53,6 +56,7 @@ const PersonlizedGuide = [
     button1: "Name store",
     active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
+    checked: false,
   },
   {
     title: "Set up a payment provider",
@@ -62,6 +66,7 @@ const PersonlizedGuide = [
     button1: "Set up payment",
     active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
+    checked: false,
   },
 ];
 
@@ -149,36 +154,6 @@ Chevron.addEventListener("click", () => {
   }
 });
 
-const createSVG = () => {
-  // Create SVG element
-  const svgElement = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "svg"
-  );
-  svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  svgElement.setAttribute("width", "24");
-  svgElement.setAttribute("height", "24");
-  svgElement.setAttribute("viewBox", "0 0 24 24");
-  svgElement.setAttribute("fill", "none");
-
-  // Create Circle element for the dashed circle
-  const circleElement = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "circle"
-  );
-  circleElement.setAttribute("cx", "12");
-  circleElement.setAttribute("cy", "12");
-  circleElement.setAttribute("r", "10");
-  circleElement.setAttribute("stroke", "#8A8A8A");
-  circleElement.setAttribute("stroke-width", "2");
-  circleElement.setAttribute("stroke-dasharray", "4, 4");
-
-  // Append Circle to SVG
-  svgElement.appendChild(circleElement);
-
-  return svgElement;
-};
-
 Bar.style.width = `${(Progress / 5) * 100}%`;
 
 const createGuide = (item, index, Track, guide_step) => {
@@ -195,7 +170,7 @@ const createGuide = (item, index, Track, guide_step) => {
     description.innerHTML = item.description;
     const more = document.createElement("a");
     more.innerHTML = " Learn more";
-    more.className = "learn-more";            
+    more.className = "learn-more";
     more.href = "https://help.shopify.com/en/manual/domains";
     description.appendChild(more);
     const button_comp = document.createElement("div");
@@ -203,11 +178,9 @@ const createGuide = (item, index, Track, guide_step) => {
     const button1 = document.createElement("button");
     button1.className = "button1";
     button1.innerHTML = item.button1;
-    const image = document.createElement("img");
-    image.src = item.circle;
-    image.width = "100%";
-    image.className = "dashed-circle";
-    left.appendChild(image);
+    const circle = document.createElement("div");
+    circle.className = "dashed-circle";
+    left.appendChild(circle);
     left_content.appendChild(title);
     left_content.appendChild(description);
     left_content.appendChild(button_comp);
@@ -228,11 +201,9 @@ const createGuide = (item, index, Track, guide_step) => {
     guide_step.className = "guide-step";
     const title = document.createElement("p");
     title.innerHTML = item.title;
-    const image = document.createElement("img");
-    image.src = item.circle;
-    image.width = "100%";
-    image.className = "dashed-circle";
-    guide_step.appendChild(image);
+    const circle = document.createElement("div");
+    circle.className = "dashed-circle";
+    guide_step.appendChild(circle);
     guide_step.appendChild(title);
   }
 };
