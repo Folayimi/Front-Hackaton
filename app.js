@@ -14,6 +14,7 @@ const Chevron = document.getElementById("chevron");
 const ShowBrandMenu = false;
 const ShowNotificationMenu = false;
 let Progress = 0;
+let Track = 0;
 
 const PersonlizedGuide = [
   {
@@ -22,7 +23,7 @@ const PersonlizedGuide = [
       "Choose a theme and add your logo, colors, and images to reflect your brand.",
     img: "https://crushingit.tech/hackathon-assets/customise-store.png",
     button1: "Customize theme",
-    active: true,
+    active: false,
   },
   {
     title: "Add your first product",
@@ -142,6 +143,7 @@ Chevron.addEventListener("click", () => {
     Chevron.style.transform = "rotate(-0deg)";
   }
 });
+
 const createSVG = () => {
   // Create SVG element
   const svgElement = document.createElementNS(
@@ -174,27 +176,43 @@ const createSVG = () => {
 
 Bar.style.width = `${(Progress / 5) * 100}%`;
 
-PersonlizedGuide.map((item, i) => {
-  const guide_step = document.createElement("li");
-
-  if (item.active) {
+const createGuide = (item, index, Track, guide_step) => {
+  console.log(Track);
+  console.log(index);
+  console.log(Track === index);
+  if (index === Track) {
     guide_step.className = "guide-step-active";
-    const title = document.createElement("p");
+    const left = document.createElement("div");
+    left.className = "left";
+    const right = document.createElement("div");
+    const left_content = document.createElement("div");
+    left_content.className = "left-content";
+    const title = document.createElement("h3");
     title.innerHTML = item.title;
     const description = document.createElement("p");
     description.innerHTML = item.description;
+    const button_comp = document.createElement("div");
+    button_comp.className = "button-comp";
+    const button1 = document.createElement("button");
+    button1.className = "button1";
+    button1.innerHTML = item.button1;
+    left.appendChild(createSVG());
+    left_content.appendChild(title);
+    left_content.appendChild(description);
+    left_content.appendChild(button_comp);
+    button_comp.appendChild(button1);
+    if (item.button2) {
+      const button2 = document.createElement("button");
+      button2.className = "button2";
+      button2.innerHTML = item.button2;
+      button_comp.appendChild(button2);
+    }
+    left.appendChild(left_content);
     const img = document.createElement("img");
     img.src = item.img;
-    const button1 = document.createElement("button");
-    button1.innerHTML = item.button1;
-    const button2 = document.createElement("button");
-    button2.innerHTML = item.button2;
-    guide_step.appendChild(createSVG());
-    guide_step.appendChild(title);
-    guide_step.appendChild(description);
-    guide_step.appendChild(img);
-    guide_step.appendChild(button1);
-    guide_step.appendChild(button2);
+    right.appendChild(img);
+    guide_step.appendChild(left);
+    guide_step.appendChild(right);
   } else {
     guide_step.className = "guide-step";
     const title = document.createElement("p");
@@ -202,6 +220,19 @@ PersonlizedGuide.map((item, i) => {
     guide_step.appendChild(createSVG());
     guide_step.appendChild(title);
   }
+};
 
-  Guide.appendChild(guide_step);
-});
+const loadGuides = (Track) => {
+  PersonlizedGuide.map((item, i) => {
+    const guide_step = document.createElement("li");
+    createGuide(item, i, Track, guide_step);
+    guide_step.addEventListener("click", () => {
+      Track = i;
+      Guide.replaceChildren();
+      loadGuides(Track);
+    });
+    Guide.appendChild(guide_step);
+  });
+};
+
+loadGuides(Track);
