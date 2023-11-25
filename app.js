@@ -177,9 +177,6 @@ const createSVG = () => {
 Bar.style.width = `${(Progress / 5) * 100}%`;
 
 const createGuide = (item, index, Track, guide_step) => {
-  console.log(Track);
-  console.log(index);
-  console.log(Track === index);
   if (index === Track) {
     guide_step.className = "guide-step-active";
     const left = document.createElement("div");

@@ -465,6 +465,7 @@ body {
 
 .guide-step-active > .left {
   display: flex;
+  width: 70%;
   gap: 8px;
 }
 
