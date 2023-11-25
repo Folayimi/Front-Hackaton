@@ -178,12 +178,8 @@ const createGuide = (item, index, Track, guide_step) => {
     const button1 = document.createElement("button");
     button1.className = "button1";
     button1.innerHTML = item.button1;
-    const circle = document.createElement("div");
-    circle.className = "dashed-circle";
-    left.appendChild(circle);
     left_content.appendChild(title);
     left_content.appendChild(description);
-    left_content.appendChild(button_comp);
     button_comp.appendChild(button1);
     if (item.button2) {
       const button2 = document.createElement("button");
@@ -191,7 +187,35 @@ const createGuide = (item, index, Track, guide_step) => {
       button2.innerHTML = item.button2;
       button_comp.appendChild(button2);
     }
-    left.appendChild(left_content);
+    left_content.appendChild(button_comp);
+    if (!item.checked) {
+      const circle = document.createElement("div");
+      circle.className = "dashed-circle";
+      left.replaceChildren();
+      left.appendChild(circle);
+      left.appendChild(left_content);
+      circle.addEventListener("click", () => {
+        const itemToCheck = PersonlizedGuide.find(
+          (track) => track.title === item.title
+        );
+        itemToCheck.checked = true;
+      });
+    } else {
+      const check = document.createElement("img");
+      check.src =
+        "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
+      check.className = "check-box";
+      check.width = "100%";
+      left.replaceChildren();
+      left.appendChild(check);
+      left.appendChild(left_content);
+      check.addEventListener("click", () => {
+        const itemToUnCheck = PersonlizedGuide.find(
+          (track) => track.title === item.title
+        );
+        itemToUnCheck.checked = false;
+      });
+    }
     const img = document.createElement("img");
     img.src = item.img;
     right.appendChild(img);
@@ -201,9 +225,32 @@ const createGuide = (item, index, Track, guide_step) => {
     guide_step.className = "guide-step";
     const title = document.createElement("p");
     title.innerHTML = item.title;
-    const circle = document.createElement("div");
-    circle.className = "dashed-circle";
-    guide_step.appendChild(circle);
+    if (!item.checked) {
+      const circle = document.createElement("div");
+      circle.className = "dashed-circle";
+      guide_step.replaceChildren();
+      guide_step.appendChild(circle);
+      circle.addEventListener("click", () => {
+        const itemToCheck = PersonlizedGuide.find(
+          (track) => track.title === item.title
+        );
+        itemToCheck.checked = true;
+      });
+    } else {
+      const check = document.createElement("img");
+      check.src =
+        "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
+      check.className = "check-box";
+      check.width = "100%";
+      guide_step.replaceChildren();
+      guide_step.appendChild(check);
+      check.addEventListener("click", () => {
+        const itemToUnCheck = PersonlizedGuide.find(
+          (track) => track.title === item.title
+        );
+        itemToUnCheck.checked = false;
+      });
+    }
     guide_step.appendChild(title);
   }
 };
@@ -212,12 +259,12 @@ const loadGuides = (Track) => {
   PersonlizedGuide.map((item, i) => {
     const guide_step = document.createElement("li");
     createGuide(item, i, Track, guide_step);
+    Guide.appendChild(guide_step);
     guide_step.addEventListener("click", () => {
       Track = i;
       Guide.replaceChildren();
       loadGuides(Track);
     });
-    Guide.appendChild(guide_step);
   });
 };
 

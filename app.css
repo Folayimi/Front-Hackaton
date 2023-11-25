@@ -463,6 +463,11 @@ body {
   transition: 0.3s;
 }
 
+.guide-step .check-box {
+  width: 24px;
+  cursor: pointer;
+}
+
 .guide-step .dashed-circle:hover {
   border: 2px solid #8a8a8a;
 }
@@ -499,6 +504,11 @@ body {
 
 .guide-step-active .dashed-circle:active {
   background: #e3e3e3;
+}
+
+.guide-step-active .check-box {
+  width: 24px;
+  cursor: pointer;
 }
 
 .guide-step-active > .left {
