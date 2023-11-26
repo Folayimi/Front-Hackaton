@@ -511,6 +511,16 @@ body {
   cursor: pointer;
 }
 
+.guide-step-active > .checked {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1c181d;
+}
+
 .guide-step-active > .left {
   display: flex;
   align-items: start;

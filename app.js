@@ -4,6 +4,7 @@ const Name = document.getElementById("nameCtn");
 const NotificationBox = document.getElementById("notif-box");
 const ProfileBox = document.getElementById("profile-box");
 const Bar = document.getElementById("bar");
+const Completed = document.getElementById("completed");
 const Banner = document.getElementById("plan-banner");
 const Cancel = document.getElementById("cancel");
 const BrandMenu = document.getElementById("brand-menu");
@@ -18,53 +19,53 @@ let Track = 0;
 
 const PersonlizedGuide = [
   {
+    id: 0,
     title: "Customize your online store",
     description:
       "Choose a theme and add your logo, colors, and images to reflect your brand.",
     img: "https://crushingit.tech/hackathon-assets/customise-store.png",
     button1: "Customize theme",
-    active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
     checked: false,
   },
   {
+    id: 1,
     title: "Add your first product",
     description:
       "Write a description, add photos, and set pricing for the products you plan to sell.",
     img: "https://crushingit.tech/hackathon-assets/product.png",
     button1: "Add product",
     button2: "Import product",
-    active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
     checked: false,
   },
   {
+    id: 2,
     title: "Add a custom domain",
     description:
       "Your current domain is 222219.myshopify.com but you can add a custom domain to help customers find your online store.",
     img: "https://crushingit.tech/hackathon-assets/website.png",
     button1: "Add domain",
-    active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
     checked: false,
   },
   {
+    id: 3,
     title: "Name your store",
     description:
       "Your temporary store name is currently Davii collections. The store name appears in your admin and your online store.",
     img: "https://crushingit.tech/hackathon-assets/name-store.png",
     button1: "Name store",
-    active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
     checked: false,
   },
   {
+    id: 4,
     title: "Set up a payment provider",
     description:
       "Choose a payment provider to start accepting payments. You’ll need to create an account with the payment provider and set it up with your Shopify store.",
     img: "https://crushingit.tech/hackathon-assets/payment.png",
     button1: "Set up payment",
-    active: false,
     circle: "https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg",
     checked: false,
   },
@@ -154,7 +155,34 @@ Chevron.addEventListener("click", () => {
   }
 });
 
-Bar.style.width = `${(Progress / 5) * 100}%`;
+const loadProgress = () => {
+  Progress = 0;
+  PersonlizedGuide.map((item) => {
+    if (item.checked) {
+      Progress++;
+    }
+  });
+  Completed.innerHTML = `${Progress} / 5 completed`;
+  Bar.style.width = `${(Progress / 5) * 100}%`;
+};
+
+const loadGuides = () => {
+  PersonlizedGuide.map((item, i) => {
+    const guide_step = document.createElement("li");
+    createGuide(item, i, Track, guide_step);
+    Guide.appendChild(guide_step);
+    guide_step.addEventListener("click", () => {
+      const index = PersonlizedGuide.find((track) => track.checked === false);
+      if (item.checked && index !== undefined) {
+        Track = index.id;
+      } else {
+        Track = i;
+      }
+      Guide.replaceChildren();
+      loadGuides();
+    });
+  });
+};
 
 const createGuide = (item, index, Track, guide_step) => {
   if (index === Track) {
@@ -189,7 +217,8 @@ const createGuide = (item, index, Track, guide_step) => {
     }
     left_content.appendChild(button_comp);
     if (!item.checked) {
-      const circle = document.createElement("div");
+      loadProgress();
+      const circle = document.createElement("button");
       circle.className = "dashed-circle";
       left.replaceChildren();
       left.appendChild(circle);
@@ -201,13 +230,17 @@ const createGuide = (item, index, Track, guide_step) => {
         itemToCheck.checked = true;
       });
     } else {
+      loadProgress();
       const check = document.createElement("img");
       check.src =
         "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
       check.className = "check-box";
       check.width = "100%";
+      const checked = document.createElement("div");
+      checked.className = "checked";
+      checked.appendChild(check);
       left.replaceChildren();
-      left.appendChild(check);
+      left.appendChild(checked);
       left.appendChild(left_content);
       check.addEventListener("click", () => {
         const itemToUnCheck = PersonlizedGuide.find(
@@ -255,17 +288,4 @@ const createGuide = (item, index, Track, guide_step) => {
   }
 };
 
-const loadGuides = (Track) => {
-  PersonlizedGuide.map((item, i) => {
-    const guide_step = document.createElement("li");
-    createGuide(item, i, Track, guide_step);
-    Guide.appendChild(guide_step);
-    guide_step.addEventListener("click", () => {
-      Track = i;
-      Guide.replaceChildren();
-      loadGuides(Track);
-    });
-  });
-};
-
-loadGuides(Track);
+loadGuides();
