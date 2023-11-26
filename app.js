@@ -242,7 +242,7 @@ const createGuide = (item, index, Track, guide_step) => {
       left.replaceChildren();
       left.appendChild(checked);
       left.appendChild(left_content);
-      check.addEventListener("click", () => {
+      checked.addEventListener("click", () => {
         const itemToUnCheck = PersonlizedGuide.find(
           (track) => track.title === item.title
         );
@@ -275,8 +275,11 @@ const createGuide = (item, index, Track, guide_step) => {
         "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
       check.className = "check-box";
       check.width = "100%";
+      const checked = document.createElement("div");
+      checked.className = "checked";
+      checked.appendChild(check);
       guide_step.replaceChildren();
-      guide_step.appendChild(check);
+      guide_step.appendChild(checked);
       check.addEventListener("click", () => {
         const itemToUnCheck = PersonlizedGuide.find(
           (track) => track.title === item.title

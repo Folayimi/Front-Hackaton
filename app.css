@@ -465,7 +465,17 @@ body {
 
 .guide-step .check-box {
   width: 24px;
-  cursor: pointer;
+  cursor: pointer;  
+}
+
+.guide-step > .checked {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1c181d;
 }
 
 .guide-step .dashed-circle:hover {
@@ -488,7 +498,7 @@ body {
 }
 
 .guide-step-active .dashed-circle {
-  width: 24px;
+  width: 22px;
   height: 22px;
   border-radius: 50%;
   background: transparent;
@@ -511,7 +521,7 @@ body {
   cursor: pointer;
 }
 
-.guide-step-active > .checked {
+.guide-step-active .checked {
   width: 24px;
   height: 24px;
   border-radius: 50%;
