@@ -1,10 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Inter;
+  --font-inter: "Inter", sans-serif;
   box-sizing: border-box;
 }
 body {
+  font-family: var(--font-inter);
   background: #f1f1f1;
 }
 
@@ -29,12 +30,12 @@ body {
   align-items: center;
 }
 
-.header > .brand-menu {
+.profile-box > .brand-menu {
   z-index: 50;
   position: absolute;
-  transition: 0.7s;
-  top: 70px;
-  right: 16px;
+  transition: 0.5s;
+  top: 58px;
+  right: 0px;
   display: flex;
   width: 320px;
   padding: 6px 0px;
@@ -47,13 +48,19 @@ body {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
   font-weight: 400;
   font-size: 13px;
-  color: #303030;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+}
+
+@media screen and (max-width: 360px) {
+  .profile-box > .brand-menu {
+    width: 90vw;
+  }
 }
 
 .header > .notif-menu {
-  z-index: 50;
   position: absolute;
-  transition: 0.7s;
+  z-index: 50;
+  transition: 0.5s;
   top: 70px;
   right: 16px;
   width: 383px;
@@ -65,6 +72,12 @@ body {
   border: 1px solid var(--stroke-s-50, #dbdbdb);
   background: var(--White, #fff);
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (max-width: 420px) {
+  .header > .notif-menu {
+    width: 90vw;
+  }
 }
 
 .notif-menu > .alerts {
@@ -87,6 +100,7 @@ body {
   padding: 4px 12px 4px 8px;
   align-self: stretch;
   background: var(--states-hover, #f1f1f1);
+  margin-bottom: 4px;
 }
 
 .brand-menu > .cnt #dm {
@@ -102,13 +116,16 @@ body {
 
 .brand-menu li {
   list-style-type: none;
+  transition: 0.3s;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  gap: 8px;
   cursor: pointer;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 8px;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+  gap: 8px;
 }
 
 .brand-menu li:hover {
@@ -119,8 +136,41 @@ body {
   background: var(--states-hover, #f1f1f1);
 }
 
+.brand-menu li:focus {
+  border: 2px solid var(--states-focused, #005bd3);
+  outline: none;
+}
+
+.brand-menu a:hover {
+  background: var(--states-hover, #f1f1f1);
+}
+
+.brand-menu a:active {
+  background: var(--states-hover, #f1f1f1);
+}
+
+.brand-menu a:focus {
+  border: 2px solid var(--states-focused, #005bd3);
+  outline: none;
+}
+
+.brand-menu a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: 0.3s;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  outline: none;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+  gap: 8px;
+}
+
 .searchBar {
   flex: 0 1 480px;
+  transition: 0.3s;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -160,6 +210,7 @@ body {
 
 .menuR > .notif-box {
   display: flex;
+  transition: 0.5s;
   padding: 8px;
   justify-content: center;
   align-items: center;
@@ -167,6 +218,13 @@ body {
   border-radius: 8px;
   background: var(--grey-grey-200, #303030);
   cursor: pointer;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.menuR > .notif-box:focus {
+  background: var(--font-mid-2, #616161);
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .menuR > .notif-box-focus {
@@ -186,7 +244,9 @@ body {
 }
 
 .menuR > .profile-box {
+  position: relative;
   display: flex;
+  transition: 0.5s;
   padding: 2px 2px 2px 8px;
   align-items: center;
   gap: 8px;
@@ -195,20 +255,13 @@ body {
   font-size: 12px;
   font-weight: 500;
   color: var(--font-light, #e3e3e3);
+  outline: none;
+  border: 1px solid transparent;
   cursor: pointer;
 }
 
-.menuR > .profile-box-focus {
-  display: flex;
-  padding: 2px 2px 2px 8px;
-  align-items: center;
-  gap: 8px;
-  border-radius: 8px;
+.menuR > .profile-box:focus {
   background: var(--font-mid-2, #616161);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--font-light, #e3e3e3);
-  cursor: pointer;
   box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
@@ -275,6 +328,7 @@ body {
   color: var(--font-dark, #323232);
   font-weight: 600;
   font-size: 12px;
+  transition: 0.5s;
   display: flex;
   padding: 6px 12px;
   width: fit-content;
@@ -285,6 +339,12 @@ body {
   box-shadow: 0px -1px 0px 0px #b5b5b5 inset;
   cursor: pointer;
   text-wrap: nowrap;
+  outline: none;
+}
+
+.trial-plan a {
+  text-decoration: none;
+  color: var(--font-dark, #323232);
 }
 
 .trial-plan:hover {
@@ -310,7 +370,6 @@ body {
 
 .content > .setup-guide {
   margin-top: 72px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -363,8 +422,7 @@ body {
   width: 72px;
   height: 4px;
   background: #e3e3e3;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+  border-radius: 2px;
 }
 
 .top > .chevron {
@@ -372,6 +430,214 @@ body {
   padding: 4px;
   align-items: flex-start;
   cursor: pointer;
+  border-radius: 6px;
+  transition: 0.1s;
+  outline: none;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.top > .chevron:focus {
+  background: #e3e3e3;
+  /* box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #fff; */
+}
+
+.top > .chevron:hover {
+  background: #e3e3e3;
+}
+
+.setup-guide > .guide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.guide > .guide-step {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+  cursor: pointer;
+}
+
+.guide-step .dashed-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px dashed #8a8a8a;
+  border-style: dashed;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.guide-step .check-box {
+  width: 24px;
+  cursor: pointer;  
+}
+
+.guide-step > .checked {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1c181d;
+}
+
+.guide-step .dashed-circle:hover {
+  border: 2px solid #8a8a8a;
+}
+
+.guide-step > .dashed-circle:active {
+  background: #e3e3e3;
+}
+
+.guide > .guide-step-active {
+  display: flex;
+  padding: 8px 8px 12px 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 10px;
+  background: #f3f3f3;
+  align-self: stretch;
+}
+
+.guide-step-active .dashed-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px dashed #8a8a8a;
+  border-style: dashed;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.guide-step-active .dashed-circle:hover {
+  border: 2px solid #8a8a8a;
+}
+
+.guide-step-active .dashed-circle:active {
+  background: #e3e3e3;
+}
+
+.guide-step-active .check-box {
+  width: 24px;
+  cursor: pointer;
+}
+
+.guide-step-active .checked {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1c181d;
+}
+
+.guide-step-active > .left {
+  display: flex;
+  align-items: start;
+  width: 70%;
+  gap: 8px;
+}
+
+.left > .left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--font-mid-2, #616161);
+}
+
+.left-content .learn-more {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--states-focused, #005bd3);
+  font-size: 14px;
+}
+
+.left-content h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--font-dark, var(--grey-g-200, #303030));
+}
+
+.left-content > .button-comp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button-comp > .button1 {
+  display: flex;
+  padding: 6px 12px;
+  align-items: center;
+  border-radius: 6px;
+  border-top: 1.5px solid var(--stroke-light-100, rgba(255, 255, 255, 0.2));
+  border-right: 1.5px solid var(--stroke-light-100, rgba(255, 255, 255, 0.2));
+  border-left: 1.5px solid var(--stroke-light-100, rgba(255, 255, 255, 0.2));
+  background: #404040;
+  box-shadow: 0px 0px 0px 1.5px #333, 0px 1px 0px 1.5px #333,
+    0px 2px 0px 0px #000;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--font-light, #f6f3f6);
+  transition: 0.3s;
+}
+
+.button-comp > .button1:hover {
+  background: #2a2a2a;
+}
+
+.button-comp > .button1:active {
+  border: none;
+  background: #2b2b2b;
+  box-shadow: 0px 0px 0px 1.5px #333, 0px 3px 0px 0px #000 inset;
+}
+
+.button-comp > .button1:focus {
+  background: #404040;
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 3px #fff,
+    0px 0px 0px 1.5px #333;
+}
+
+.button-comp > .button2 {
+  display: inline-flex;
+  padding: 6px 12px;
+  align-items: center;
+  gap: 8px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--font-dark, #323232);
+}
+
+.button-comp > .button2:hover {
+  background: #e7e7e7;
+}
+
+.button-comp > .button2:active {
+  background: #e0e0e0;
+}
+
+.button-comp > .button2:focus {
+  border: 2px solid var(--states-focused, #005bd3);
+  background: #fff;
 }
 
 @media screen and (max-width: 768px) {
