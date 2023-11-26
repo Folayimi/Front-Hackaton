@@ -6,6 +6,10 @@ const ProfileBox = document.getElementById("profile-box");
 const Bar = document.getElementById("bar");
 const Banner = document.getElementById("plan-banner");
 const Cancel = document.getElementById("cancel");
+const BrandMenu = document.getElementById("brand-menu");
+const NotificationMenu = document.getElementById("notif-menu");
+const ShowBrandMenu = false;
+const ShowNotificationMenu = false;
 let Progress = 1;
 
 Bar.style.width = `${(Progress / 5) * 100}%`;
@@ -30,21 +34,44 @@ window.addEventListener("resize", () => {
   }
 });
 
-NotificationBox.addEventListener("click", () => {
-  NotificationBox.style.background = "var(--font-mid-2, #616161)";
-  if (window.innerWidth >= 768) {
-    NotificationBox.style.boxShadow =
-      " 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000";
+NotificationBox.addEventListener("click", (e) => {
+  if (NotificationBox.classList.contains("notif-box")) {
+    NotificationBox.setAttribute("class", "notif-box-focus");
+  } else {
+    NotificationBox.setAttribute("class", "notif-box");
+  }
+
+  if (NotificationMenu.style.display === "none") {
+    NotificationMenu.style.display = "flex";
+  } else {
+    NotificationMenu.style.display = "none";
+  }
+  if (
+    BrandMenu.style.display === "flex" &&
+    NotificationMenu.style.display === "flex"
+  ) {
+    BrandMenu.style.display = "none";
   }
 });
 
 ProfileBox.addEventListener("click", () => {
-  ProfileBox.style.background = "var(--font-mid-2, #616161)";
   if (window.innerWidth >= 768) {
-    ProfileBox.style.boxShadow =
-      " 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000";
+    if (ProfileBox.classList.contains("profile-box")) {
+      ProfileBox.setAttribute("class", "profile-box-focus");
+    } else {
+      ProfileBox.setAttribute("class", "profile-box");
+    }
+  }
+  if (BrandMenu.style.display === "none") {
+    BrandMenu.style.display = "flex";
   } else {
-    ProfileBox.style.border = "2px solid #616161";
+    BrandMenu.style.display = "none";
+  }
+  if (
+    NotificationMenu.style.display === "flex" &&
+    BrandMenu.style.display === "flex"
+  ) {
+    NotificationMenu.style.display = "none";
   }
 });
 

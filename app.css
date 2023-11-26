@@ -32,6 +32,7 @@ body {
 .header > .brand-menu {
   z-index: 50;
   position: absolute;
+  transition: 0.7s;
   top: 70px;
   right: 16px;
   display: flex;
@@ -48,6 +49,34 @@ body {
   font-size: 13px;
   color: #303030;
 }
+
+.header > .notif-menu {
+  z-index: 50;
+  position: absolute;
+  transition: 0.7s;
+  top: 70px;
+  right: 16px;
+  width: 383px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--stroke-s-50, #dbdbdb);
+  background: var(--White, #fff);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+}
+
+.notif-menu > .alerts {
+  display: flex;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--font-mid-2, #616161);
+  font-weight: 600;
+  align-items: center;
+  background: var(--states-hover, #f1f1f1);
+}
+
 .brand-menu > .cnt {
   width: 100%;
   padding: 0px 6px;
@@ -57,6 +86,7 @@ body {
   justify-content: space-between;
   padding: 4px 12px 4px 8px;
   align-self: stretch;
+  background: var(--states-hover, #f1f1f1);
 }
 
 .brand-menu > .cnt #dm {
@@ -139,6 +169,18 @@ body {
   cursor: pointer;
 }
 
+.menuR > .notif-box-focus {
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background: var(--font-mid-2, #616161);
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
+}
+
 .notif-box:hover {
   background: var(--font-mid-2, #616161);
 }
@@ -154,6 +196,20 @@ body {
   font-weight: 500;
   color: var(--font-light, #e3e3e3);
   cursor: pointer;
+}
+
+.menuR > .profile-box-focus {
+  display: flex;
+  padding: 2px 2px 2px 8px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background: var(--font-mid-2, #616161);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--font-light, #e3e3e3);
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .profile-box:hover {
