@@ -21,7 +21,9 @@ class Action {
 
     this.initializeUI();
     this.addEventListeners();
+    this.loadProgress();
     this.loadGuides(this.Track);
+    this.imagePresence();
   }
 
   initializeUI() {
@@ -37,8 +39,18 @@ class Action {
     }
   }
 
+  imagePresence() {
+    // Image presence
+    Array.from(this.PersonlizedGuide).forEach((item) => {
+      const right = item.querySelector("#right");
+      if (window.innerWidth < 768) {
+        right.style.display = "none";
+      }
+    });
+  }
+
   addEventListeners() {
-    // Add event listeners here    
+    // Add event listeners here
     window.addEventListener("resize", () => {
       this.handleWindowResize();
     });
@@ -180,7 +192,7 @@ class Action {
     // Load progress
     this.Progress = 0;
     Array.from(this.PersonlizedGuide).forEach((item) => {
-      if (item.checked) {
+      if (item.getAttribute("aria-checked") === "active") {
         this.Progress++;
       }
     });
@@ -236,7 +248,11 @@ class Action {
       item.className = "guide-step-active";
       leftContent.style.display = "flex";
       text.style.display = "none";
-      right.style.display = "flex";
+      if (window.innerWidth < 768) {
+        right.style.display = "none";
+      } else {
+        right.style.display = "flex";
+      }
     } else {
       item.className = "guide-step";
       checker.style.display = "block";
@@ -262,6 +278,7 @@ class Action {
         enclose.style.display = "none";
         checker.style.display = "block";
         clearTimeout(beginLoading);
+        this.loadProgress();
         this.showGuide(item, index, Track);
       }, 500);
     });
@@ -274,6 +291,7 @@ class Action {
         enclose.style.display = "none";
         checker.style.display = "block";
         clearTimeout(beginLoading);
+        this.loadProgress();
         this.showGuide(item, index, Track);
       }, 500);
     });
@@ -291,6 +309,7 @@ class Action {
         item.setAttribute("aria-checked", "active");
         checkBox.style.display = "block";
         clearTimeout(finishLoading);
+        this.loadProgress();
         this.goToInActive();
       }, 600);
     });
@@ -307,6 +326,7 @@ class Action {
         item.setAttribute("aria-checked", "active");
         checkBox.style.display = "block";
         clearTimeout(finishLoading);
+        this.loadProgress();
         this.goToInActive();
       }, 600);
     });
