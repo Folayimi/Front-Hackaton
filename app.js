@@ -184,6 +184,15 @@ const loadGuides = () => {
   });
 };
 
+const commenceLoading = (content) => {
+  const loader = document.createElement("img");
+  loader.src = "https://crushingit.tech/hackathon-assets/icon-spinner.svg";
+  loader.width = "100%";
+  loader.className = "loader";
+  content.replaceChildren();
+  content.appendChild(loader);
+};
+
 const createGuide = (item, index, Track, guide_step) => {
   if (index === Track) {
     guide_step.className = "guide-step-active";
@@ -216,6 +225,7 @@ const createGuide = (item, index, Track, guide_step) => {
       button_comp.appendChild(button2);
     }
     left_content.appendChild(button_comp);
+
     if (!item.checked) {
       loadProgress();
       const circle = document.createElement("button");
@@ -231,23 +241,26 @@ const createGuide = (item, index, Track, guide_step) => {
       });
     } else {
       loadProgress();
-      const check = document.createElement("img");
-      check.src =
-        "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
-      check.className = "check-box";
-      check.width = "100%";
-      const checked = document.createElement("div");
-      checked.className = "checked";
-      checked.appendChild(check);
-      left.replaceChildren();
-      left.appendChild(checked);
-      left.appendChild(left_content);
-      checked.addEventListener("click", () => {
-        const itemToUnCheck = PersonlizedGuide.find(
-          (track) => track.title === item.title
-        );
-        itemToUnCheck.checked = false;
-      });
+      setTimeout(() => {
+        const check = document.createElement("img");
+        check.src =
+          "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
+        check.className = "check-box";
+        check.width = "100%";
+        const checked = document.createElement("div");
+        checked.className = "checked";
+        checked.appendChild(check);
+        left.replaceChildren();
+        left.appendChild(checked);
+        left.appendChild(left_content);
+        checked.addEventListener("click", () => {
+          const itemToUnCheck = PersonlizedGuide.find(
+            (track) => track.title === item.title
+          );
+          itemToUnCheck.checked = false;
+        });
+      }, 500);
+      commenceLoading(left);
     }
     const img = document.createElement("img");
     img.src = item.img;
@@ -270,22 +283,26 @@ const createGuide = (item, index, Track, guide_step) => {
         itemToCheck.checked = true;
       });
     } else {
-      const check = document.createElement("img");
-      check.src =
-        "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
-      check.className = "check-box";
-      check.width = "100%";
-      const checked = document.createElement("div");
-      checked.className = "checked";
-      checked.appendChild(check);
-      guide_step.replaceChildren();
-      guide_step.appendChild(checked);
-      check.addEventListener("click", () => {
-        const itemToUnCheck = PersonlizedGuide.find(
-          (track) => track.title === item.title
-        );
-        itemToUnCheck.checked = false;
-      });
+      setTimeout(() => {
+        const check = document.createElement("img");
+        check.src =
+          "https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg";
+        check.className = "check-box";
+        check.width = "100%";
+        const checked = document.createElement("div");
+        checked.className = "checked";
+        checked.appendChild(check);
+        guide_step.replaceChildren();
+        guide_step.appendChild(checked);
+        checked.addEventListener("click", () => {
+          const itemToUnCheck = PersonlizedGuide.find(
+            (track) => track.title === item.title
+          );
+          itemToUnCheck.checked = false;
+        });
+        guide_step.appendChild(title);
+      }, 500);
+      commenceLoading(guide_step);
     }
     guide_step.appendChild(title);
   }
