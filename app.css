@@ -471,6 +471,14 @@ body {
   font-weight: 500;
   color: var(--font-dark, var(--grey-g-200, #303030));
   cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.guide-step:focus {
+  box-shadow: 0px 0px 0px 2px #005bd3, 0px 0px 0px 1px #fff,
+    0px -1px 0px 0px #b5b5b5 inset;
 }
 
 .guide-step .left {
@@ -516,7 +524,7 @@ body {
 .left .loader {
   width: 24px;
   filter: invert(100%);
-  animation: rotateLoader 5s;
+  animation: rotateLoader 1s;
 }
 
 @keyframes rotateLoader {
@@ -530,22 +538,8 @@ body {
   padding: 8px 8px 12px 8px;
   align-items: center;
   justify-content: space-between;
-  /* gap: 20px; */
   border-radius: 10px;
   background: #f3f3f3;
-  background: red;
-}
-
-.guide-step-active .loader {
-  width: 24px;
-  filter: invert(100%);
-  animation: rotateLoader 1s;
-}
-
-@keyframes rotateLoader {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .guide-step-active .check-box {
@@ -576,6 +570,7 @@ body {
   font-size: 13px;
   font-weight: 500;
   color: var(--font-mid-2, #616161);
+  cursor: pointer;
 }
 
 .left-content .learn-more {
