@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./app.css" />
+    <script src="./app.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -316,7 +317,7 @@
                       background: #1a1a1a;
                       height: 100%;
                       border-radius: 4px;
-                      transition: .3s;
+                      transition: 0.3s;
                     "
                   ></div>
                 </div>
@@ -339,11 +340,453 @@
               </svg>
             </button>
           </div>
-          <ul class="guide" id="guide" style="display: none"></ul>
+          <ul class="guide" id="guide" style="display: none">
+            <li class="guide-step" id="guide-step" aria-checked="false" step-tag="0">
+              <div class="left" id="left">
+                <button
+                  class="dashed-circle"
+                  id="dashed-circle"
+                  style="display: flex; width: 24px"
+                ></button>
+                <button
+                  id="enclose"
+                  class="enclose"
+                >
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
+                    class="loader"
+                    id="loader"
+                    style="display: none"
+                    alt="loader-image"
+                  />
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    id="check-box"
+                    style="display: none; cursor: pointer"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#1C181D"></circle>
+                    <path
+                      d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                      fill="#fff"
+                    ></path>
+                  </svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    id="load-box"
+                    style="display: none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ellipse
+                      opacity="0.6"
+                      cx="7.00008"
+                      cy="7.00004"
+                      rx="7.00008"
+                      ry="7.00004"
+                      transform="matrix(0.526082 -0.850434 0.850437 0.526077 2.36414 14.2701)"
+                      fill="#1C181D"
+                      stroke="#1C181D"
+                      stroke-width="1.45835"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <g opacity="0.6">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.7757 7.89535C12.0109 7.83993 12.2465 7.98566 12.3019 8.22085L13.5318 13.4402C13.5872 13.6754 13.4415 13.9109 13.2063 13.9663L10.5966 14.5813C10.3614 14.6367 10.1258 14.491 10.0704 14.2558C10.015 14.0206 10.1607 13.785 10.3959 13.7296L12.5798 13.215L11.4502 8.42154C11.3948 8.18635 11.5406 7.95077 11.7757 7.89535Z"
+                        fill="white"
+                      />
+                    </g>
+                  </svg>
+                </button>
+                <p style="display: block">Customize your online store</p>
+                <div class="left-content" id="left-content">
+                  <h3>Customize your online store</h3>
+                  <p>
+                    Choose a theme and add your logo, colors, and images to
+                    reflect your brand.
+                    <a
+                      href="https://help.shopify.com/en/manual/domains"
+                      class="learn-more"
+                      >Learn more</a
+                    >
+                  </p>
+                  <div class="button-comp">
+                    <button class="button1">Customize theme</button>
+                  </div>
+                </div>
+              </div>
+              <div id="right" style="display: none">
+                <img
+                  src="https://crushingit.tech/hackathon-assets/customise-store.png"
+                  alt="image"
+                />
+              </div>
+            </li>
+            <li class="guide-step" id="guide-step" aria-checked="false" step-tag="1">
+              <div class="left" id="left">
+                <button
+                  class="dashed-circle"
+                  id="dashed-circle"
+                  style="display: flex; width: 24px"
+                ></button>
+                <button
+                  id="enclose"
+                  class="enclose"
+                >
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
+                    class="loader"
+                    id="loader"
+                    style="display: none"
+                    alt="loader-image"
+                  />
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    id="check-box"
+                    style="display: none; cursor: pointer"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#1C181D"></circle>
+                    <path
+                      d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                      fill="#fff"
+                    ></path>
+                  </svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    id="load-box"
+                    style="display: none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ellipse
+                      opacity="0.6"
+                      cx="7.00008"
+                      cy="7.00004"
+                      rx="7.00008"
+                      ry="7.00004"
+                      transform="matrix(0.526082 -0.850434 0.850437 0.526077 2.36414 14.2701)"
+                      fill="#1C181D"
+                      stroke="#1C181D"
+                      stroke-width="1.45835"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <g opacity="0.6">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.7757 7.89535C12.0109 7.83993 12.2465 7.98566 12.3019 8.22085L13.5318 13.4402C13.5872 13.6754 13.4415 13.9109 13.2063 13.9663L10.5966 14.5813C10.3614 14.6367 10.1258 14.491 10.0704 14.2558C10.015 14.0206 10.1607 13.785 10.3959 13.7296L12.5798 13.215L11.4502 8.42154C11.3948 8.18635 11.5406 7.95077 11.7757 7.89535Z"
+                        fill="white"
+                      />
+                    </g>
+                  </svg>
+                </button>
+                <p style="display: block">Add your first product</p>
+                <div class="left-content" id="left-content">
+                  <h3>Add your first product</h3>
+                  <p>
+                    Write a description, add photos, and set pricing for the
+                    products you plan to sell.
+                    <a
+                      href="https://help.shopify.com/en/manual/domains"
+                      class="learn-more"
+                      >Learn more</a
+                    >
+                  </p>
+                  <div class="button-comp">
+                    <button class="button1">Add product</button>
+                    <button class="button2">Import product</button>
+                  </div>
+                </div>
+              </div>
+              <div id="right" style="display: none">
+                <img
+                  src="https://crushingit.tech/hackathon-assets/product.png"
+                  alt="image"
+                />
+              </div>
+            </li>
+            <li class="guide-step" id="guide-step" aria-checked="false" step-tag="2">
+              <div class="left" id="left">
+                <button
+                  class="dashed-circle"
+                  id="dashed-circle"
+                  style="display: flex; width: 24px"
+                ></button>
+                <button
+                  id="enclose"
+                  class="enclose"
+                >
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
+                    class="loader"
+                    id="loader"
+                    style="display: none"
+                    alt="loader-image"
+                  />
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    id="check-box"
+                    style="display: none; cursor: pointer"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#1C181D"></circle>
+                    <path
+                      d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                      fill="#fff"
+                    ></path>
+                  </svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    id="load-box"
+                    style="display: none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ellipse
+                      opacity="0.6"
+                      cx="7.00008"
+                      cy="7.00004"
+                      rx="7.00008"
+                      ry="7.00004"
+                      transform="matrix(0.526082 -0.850434 0.850437 0.526077 2.36414 14.2701)"
+                      fill="#1C181D"
+                      stroke="#1C181D"
+                      stroke-width="1.45835"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <g opacity="0.6">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.7757 7.89535C12.0109 7.83993 12.2465 7.98566 12.3019 8.22085L13.5318 13.4402C13.5872 13.6754 13.4415 13.9109 13.2063 13.9663L10.5966 14.5813C10.3614 14.6367 10.1258 14.491 10.0704 14.2558C10.015 14.0206 10.1607 13.785 10.3959 13.7296L12.5798 13.215L11.4502 8.42154C11.3948 8.18635 11.5406 7.95077 11.7757 7.89535Z"
+                        fill="white"
+                      />
+                    </g>
+                  </svg>
+                </button>
+                <p style="display: block">Add a custom domain</p>
+                <div class="left-content" id="left-content">
+                  <h3>Add a custom domain</h3>
+                  <p>
+                    Your current domain is 222219.myshopify.com but you can add
+                    a custom domain to help customers find your online store.
+                    <a
+                      href="https://help.shopify.com/en/manual/domains"
+                      class="learn-more"
+                      >Learn more</a
+                    >
+                  </p>
+                  <div class="button-comp">
+                    <button class="button1">Add domain</button>
+                  </div>
+                </div>
+              </div>
+              <div id="right" style="display: none">
+                <img
+                  src="https://crushingit.tech/hackathon-assets/website.png"
+                  alt="image"
+                />
+              </div>
+            </li>
+            <li class="guide-step" id="guide-step" aria-checked="false" step-tag="3">
+              <div class="left" id="left">
+                <button
+                  class="dashed-circle"
+                  id="dashed-circle"
+                  style="display: flex; width: 24px"
+                ></button>
+                <button
+                  id="enclose"
+                  class="enclose"
+                >
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
+                    class="loader"
+                    id="loader"
+                    style="display: none"
+                    alt="loader-image"
+                  />
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    id="check-box"
+                    style="display: none; cursor: pointer"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#1C181D"></circle>
+                    <path
+                      d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                      fill="#fff"
+                    ></path>
+                  </svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    id="load-box"
+                    style="display: none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ellipse
+                      opacity="0.6"
+                      cx="7.00008"
+                      cy="7.00004"
+                      rx="7.00008"
+                      ry="7.00004"
+                      transform="matrix(0.526082 -0.850434 0.850437 0.526077 2.36414 14.2701)"
+                      fill="#1C181D"
+                      stroke="#1C181D"
+                      stroke-width="1.45835"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <g opacity="0.6">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.7757 7.89535C12.0109 7.83993 12.2465 7.98566 12.3019 8.22085L13.5318 13.4402C13.5872 13.6754 13.4415 13.9109 13.2063 13.9663L10.5966 14.5813C10.3614 14.6367 10.1258 14.491 10.0704 14.2558C10.015 14.0206 10.1607 13.785 10.3959 13.7296L12.5798 13.215L11.4502 8.42154C11.3948 8.18635 11.5406 7.95077 11.7757 7.89535Z"
+                        fill="white"
+                      />
+                    </g>
+                  </svg>
+                </button>
+                <p style="display: block">Name your store</p>
+                <div class="left-content" id="left-content">
+                  <h3>Name your store</h3>
+                  <p>
+                    Your temporary store name is currently Davii collections.
+                    The store name appears in your admin and your online store.
+                    <a
+                      href="https://help.shopify.com/en/manual/domains"
+                      class="learn-more"
+                      >Learn more</a
+                    >
+                  </p>
+                  <div class="button-comp">
+                    <button class="button1">Name store</button>
+                  </div>
+                </div>
+              </div>
+              <div id="right" style="display: none">
+                <img
+                  src="https://crushingit.tech/hackathon-assets/name-store.png"
+                  alt="image"
+                />
+              </div>
+            </li>
+            <li class="guide-step" id="guide-step" aria-checked="false" step-tag="4">
+              <div class="left" id="left">
+                <button
+                  class="dashed-circle"
+                  id="dashed-circle"
+                  style="display: flex; width: 24px"
+                ></button>
+                <button
+                  id="enclose"
+                  class="enclose"
+                >
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
+                    class="loader"
+                    id="loader"
+                    style="display: none"
+                    alt="loader-image"
+                  />
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    id="check-box"
+                    style="display: none; cursor: pointer"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="10" fill="#1C181D"></circle>
+                    <path
+                      d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                      fill="#fff"
+                    ></path>
+                  </svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    id="load-box"
+                    style="display: none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ellipse
+                      opacity="0.6"
+                      cx="7.00008"
+                      cy="7.00004"
+                      rx="7.00008"
+                      ry="7.00004"
+                      transform="matrix(0.526082 -0.850434 0.850437 0.526077 2.36414 14.2701)"
+                      fill="#1C181D"
+                      stroke="#1C181D"
+                      stroke-width="1.45835"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <g opacity="0.6">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.7757 7.89535C12.0109 7.83993 12.2465 7.98566 12.3019 8.22085L13.5318 13.4402C13.5872 13.6754 13.4415 13.9109 13.2063 13.9663L10.5966 14.5813C10.3614 14.6367 10.1258 14.491 10.0704 14.2558C10.015 14.0206 10.1607 13.785 10.3959 13.7296L12.5798 13.215L11.4502 8.42154C11.3948 8.18635 11.5406 7.95077 11.7757 7.89535Z"
+                        fill="white"
+                      />
+                    </g>
+                  </svg>
+                </button>
+                <p style="display: flex">Set up a payment provider</p>
+                <div class="left-content" id="left-content">
+                  <h3>Set up a payment provider</h3>
+                  <p>
+                    Choose a payment provider to start accepting payments.
+                    You’ll need to create an account with the payment provider
+                    and set it up with your Shopify store.
+                    <span class="learn-more">Learn more</span>
+                  </p>
+                  <div class="button-comp">
+                    <button class="button1">Set up payment</button>
+                  </div>
+                </div>
+              </div>
+              <div id="right" style="display: none">
+                <img
+                  src="https://crushingit.tech/hackathon-assets/payment.png"
+                  alt="image"
+                />
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-
-    <script src="./app.js" defer></script>
   </body>
 </html>
