@@ -1,30 +1,33 @@
 class Action {
   constructor() {
-    this.BrandLogo = document.getElementById("brand-logo");
-    this.Name = document.getElementById("nameCtn");
-    this.NotificationBox = document.getElementById("notif-box");
-    this.ProfileBox = document.getElementById("profile-box");
-    this.Bar = document.getElementById("bar");
-    this.Completed = document.getElementById("completed");
-    this.Banner = document.getElementById("plan-banner");
-    this.Cancel = document.getElementById("cancel");
-    this.BrandMenu = document.getElementById("brand-menu");
-    this.NotificationMenu = document.getElementById("notif-menu");
-    this.Plan = document.getElementById("trial-plan");
-    this.Guide = document.getElementById("guide");
-    this.Dc = document.getElementById("dc");
+    this.BrandLogo = document.querySelector("#brand-logo");
+    this.Name = document.querySelector("#nameCtn");
+    this.NotificationBox = document.querySelector("#notif-box");
+    this.ProfileBox = document.querySelector("#profile-box");
+    this.Bar = document.querySelector("#bar");
+    this.Completed = document.querySelector("#completed");
+    this.Banner = document.querySelector("#plan-banner");
+    this.Cancel = document.querySelector("#cancel");
+    this.BrandMenu = document.querySelector("#brand-menu");
+    this.NotificationMenu = document.querySelector("#notif-menu");
+    this.Plan = document.querySelector("#trial-plan");
+    this.Guide = document.querySelector("#guide");
+    this.Dc = document.querySelector("#dc");
     this.PersonalizedGuide = this.Guide.getElementsByTagName("li");
-    this.Chevron = document.getElementById("chevron");
+    this.Chevron = document.querySelector("#chevron");
     this.SearchBox = document.querySelector("#search-box");
     this.SearchBar = document.querySelector("#search-bar");
-    this.CheckerClicked = false;    
+    this.menu = document.querySelectorAll(
+      '.cnt a[tabindex="0"], li[tabindex="0"]'
+    );
+    this.CheckerClicked = false;
     this.Progress = 0;
     this.Track = 0;
 
     this.initializeUI();
     this.addEventListeners();
     this.loadProgress();
-    this.imagePresence();    
+    this.imagePresence();
   }
 
   initializeUI() {
@@ -68,8 +71,8 @@ class Action {
       this.focusSearchBar();
     });
 
-    document.addEventListener("keydown", (e) => {
-      this.removeFocus(e);
+    this.BrandMenu.addEventListener("keyup", (e) => {
+      this.handleMenuEscape(e);
     });
 
     this.BrandMenu.addEventListener("keydown", (e) => {
@@ -82,6 +85,7 @@ class Action {
 
     this.ProfileBox.addEventListener("click", () => {
       this.toggleBrandMenu();
+      this.ProfileBox.ariaExpanded = "true";
     });
 
     this.Cancel.addEventListener("click", () => {
@@ -106,8 +110,10 @@ class Action {
     // Toggle notification menu visibility
     if (this.NotificationMenu.style.display === "none") {
       this.NotificationMenu.style.display = "flex";
+      this.NotificationBox.ariaExpanded = "true";
     } else {
       this.NotificationMenu.style.display = "none";
+      this.NotificationBox.ariaExpanded = "false";
     }
     if (
       this.BrandMenu.style.display === "flex" &&
@@ -117,61 +123,55 @@ class Action {
     }
   }
 
-  removeFocus(e) {
-    // Remove focus
-    if (e.key === "Escape") {
-      document.activeElement.blur();
-    }
-  }
-
   handleBrandMenuKeyDown(e) {
     // Handle keydown event for brand menu
-    const focusableItems = document.querySelectorAll(
-      '.cnt a[tabindex="0"], li[tabindex="0"]'
-    );
 
-    let currentIndex = Array.from(focusableItems).indexOf(
-      document.activeElement
-    );
+    let currentIndex = Array.from(this.menu).indexOf(document.activeElement);
 
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
       e.preventDefault();
-      currentIndex = (currentIndex + 1) % focusableItems.length;
+      currentIndex = (currentIndex + 1) % this.menu.length;
     } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
       e.preventDefault();
-      currentIndex =
-        (currentIndex - 1 + focusableItems.length) % focusableItems.length;
+      currentIndex = (currentIndex - 1 + this.menu.length) % this.menu.length;
     }
 
-    focusableItems[currentIndex].focus();
+    this.menu[currentIndex].focus();
   }
 
   handleGuideKeyDown(e) {
     // Handle keydown event for guide
-    const focusableItems = document.querySelectorAll('li[tabindex="0"]');
-    let currentIndex = Array.from(focusableItems).indexOf(
-      document.activeElement
-    );
+    const guide = document.querySelectorAll('li[tabindex="0"]');
+    let currentIndex = Array.from(guide).indexOf(document.activeElement);
 
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
       e.preventDefault();
-      currentIndex = (currentIndex + 1) % focusableItems.length;
+      currentIndex = (currentIndex + 1) % guide.length;
     } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
       e.preventDefault();
-      currentIndex =
-        (currentIndex - 1 + focusableItems.length) % focusableItems.length;
+      currentIndex = (currentIndex - 1 + guide.length) % guide.length;
     }
 
-    focusableItems[currentIndex].focus();
+    guide[currentIndex].focus();
+  }
+
+  handleMenuEscape(e) {
+    // Collapse Menu Event and Re-focus after escape
+    if (e.key === "Escape") {
+      this.toggleBrandMenu();
+      this.ProfileBox.focus();
+    }
   }
 
   toggleBrandMenu() {
     // Toggle brand menu visibility
     if (this.BrandMenu.style.display === "none") {
       this.BrandMenu.style.display = "flex";
-      this.Dc.focus();
+      this.ProfileBox.ariaExpanded = "true";
+      this.menu.item(0).focus();
     } else {
       this.BrandMenu.style.display = "none";
+      this.ProfileBox.ariaExpanded = "false";
     }
     if (
       this.NotificationMenu.style.display === "flex" &&
@@ -215,20 +215,26 @@ class Action {
     this.Bar.style.width = `${(this.Progress / 5) * 100}%`;
   }
 
+  handleLoadEvent(leftContent, unActive, Track, index) {
+    // Handle each guide events
+    leftContent.addEventListener("click", () => {
+      this.Track = index;
+      this.loadGuides(this.Track);
+    });
+    unActive.addEventListener("click", () => {
+      this.Track = index;
+      this.loadGuides(this.Track);
+    });
+  }
+
   loadGuides(Track) {
     // Load guides
     Array.from(this.PersonalizedGuide).forEach((listItem, i) => {
+      console.log("loading guides");
       const leftContent = listItem.querySelector("#left-content");
       const unActive = listItem.querySelector("p");
-      leftContent.addEventListener("click", () => {
-        this.Track = i;
-        this.loadGuides(this.Track);
-      });
-      unActive.addEventListener("click", () => {
-        this.Track = i;
-        this.loadGuides(this.Track);
-      });
       this.showGuide(listItem, i, Track);
+      this.handleLoadEvent(leftContent, unActive, Track, i);
     });
   }
 
@@ -289,10 +295,10 @@ class Action {
       checkBox.style.display = "none";
     } else if (item.getAttribute("aria-checked") === "active") {
       checker.style.display = "none";
-      enclose.style.display = "block";
+      enclose.style.display = "flex";
     }
 
-    checkBox.addEventListener("click", () => {
+    enclose.addEventListener("click", () => {
       checkBox.style.display = "none";
       loader.style.display = "block";
       const beginLoading = setTimeout(() => {

@@ -40,7 +40,7 @@
           <input type="text" placeholder="Search" id="search-bar"/>
         </form>
         <div class="menuR">
-          <button class="notif-box" id="notif-box">
+          <button class="notif-box" id="notif-box" name="notification-button" aria-expanded="false">
             <div class="notif-menu" id="notif-menu" style="display: none">
               <div
                 style="
@@ -120,9 +120,10 @@
           <button
             class="profile-box"
             id="profile-box"
+            name="brand-menu-button"
             aria-haspopup="true"
             aria-expanded="false"
-            aria-controls="brand-menu"
+            aria-controls="brand-menu-button"
           >
             <div
               class="brand-menu"
