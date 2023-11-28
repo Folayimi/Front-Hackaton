@@ -264,8 +264,7 @@ class Action {
     }
 
     if (item.getAttribute("aria-checked") !== "active") {
-      checkBox.style.display = "none";
-      enclose.style.display = "flex";
+      checkBox.style.display = "none";      
     } else if (item.getAttribute("aria-checked") === "active") {
       checker.style.display = "none";
       enclose.style.display = "block";
@@ -284,38 +283,9 @@ class Action {
         this.showGuide(item, index, Track);
       }, 500);
     });
-    checkBox.removeEventListener("click", () => {
-      checkBox.style.display = "none";
-      loader.style.display = "block";
-      const beginLoading = setTimeout(() => {
-        loader.style.display = "none";
-        item.setAttribute("aria-checked", false);
-        enclose.style.display = "none";
-        checker.style.display = "block";
-        clearTimeout(beginLoading);
-        this.loadProgress();
-        this.showGuide(item, index, Track);
-      }, 500);
-    });
 
     checker.addEventListener("click", () => {
-      loader.style.display = "block";
-      checker.style.display = "none";
-      const startLoading = setTimeout(() => {
-        loader.style.display = "none";
-        loadBox.style.display = "block";
-        clearTimeout(startLoading);
-      }, 400);
-      const finishLoading = setTimeout(() => {
-        loadBox.style.display = "none";
-        item.setAttribute("aria-checked", "active");
-        checkBox.style.display = "block";
-        clearTimeout(finishLoading);
-        this.loadProgress();
-        this.goToInActive();
-      }, 600);
-    });
-    checker.removeEventListener("click", () => {
+      enclose.style.display = "flex";
       loader.style.display = "block";
       checker.style.display = "none";
       const startLoading = setTimeout(() => {
