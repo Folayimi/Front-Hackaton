@@ -12,18 +12,20 @@ class Action {
     this.NotificationMenu = document.getElementById("notif-menu");
     this.Plan = document.getElementById("trial-plan");
     this.Guide = document.getElementById("guide");
-    this.PersonlizedGuide = this.Guide.getElementsByTagName("li");
+    this.PersonalizedGuide = this.Guide.getElementsByTagName("li");
     this.Chevron = document.getElementById("chevron");
     this.ShowBrandMenu = false;
     this.ShowNotificationMenu = false;
+    this.CheckerClicked = false;
+    // this.CheckBoxClicked = false;
     this.Progress = 0;
     this.Track = 0;
 
     this.initializeUI();
     this.addEventListeners();
     this.loadProgress();
-    this.loadGuides(this.Track);
     this.imagePresence();
+    // this.controlVisibility();
   }
 
   initializeUI() {
@@ -41,7 +43,7 @@ class Action {
 
   imagePresence() {
     // Image presence
-    Array.from(this.PersonlizedGuide).forEach((item) => {
+    Array.from(this.PersonalizedGuide).forEach((item) => {
       const right = item.querySelector("#right");
       if (window.innerWidth < 768) {
         right.style.display = "none";
@@ -183,6 +185,7 @@ class Action {
     // Toggle guide visibility
     if (this.Guide.style.display === "none") {
       this.Guide.style.display = "flex";
+      this.loadGuides(0);
       this.Chevron.style.transform = "rotate(-180deg)";
     } else {
       this.Guide.style.display = "none";
@@ -193,7 +196,7 @@ class Action {
   loadProgress() {
     // Load progress
     this.Progress = 0;
-    Array.from(this.PersonlizedGuide).forEach((item) => {
+    Array.from(this.PersonalizedGuide).forEach((item) => {
       if (item.getAttribute("aria-checked") === "active") {
         this.Progress++;
       }
@@ -204,7 +207,8 @@ class Action {
 
   loadGuides(Track) {
     // Load guides
-    Array.from(this.PersonlizedGuide).forEach((listItem, i) => {
+    console.log("loading guides");
+    Array.from(this.PersonalizedGuide).forEach((listItem, i) => {
       const leftContent = listItem.querySelector("#left-content");
       const unActive = listItem.querySelector("p");
       leftContent.addEventListener("click", () => {
@@ -215,14 +219,30 @@ class Action {
         this.Track = i;
         this.loadGuides(this.Track);
       });
+      leftContent.removeEventListener("click", () => {
+        this.Track = i;
+        this.loadGuides(this.Track);
+      });
+      unActive.removeEventListener("click", () => {
+        this.Track = i;
+        this.loadGuides(this.Track);
+      });
       this.showGuide(listItem, i, Track);
     });
   }
 
-  goToInActive() {
+  controlVisibility(Track) {
+    if (this.CheckerClicked) {
+      this.loadGuides(Track);
+      this.CheckerClicked = false;
+    }
+  }
+
+  goToInActive () {
     // Go to inactive guide
+    console.log("going to inactive");
     let inactive;
-    Array.from(this.PersonlizedGuide).some((listItem) => {
+    Array.from(this.PersonalizedGuide).some((listItem) => {
       if (listItem.getAttribute("aria-checked") !== "active") {
         inactive = listItem;
         return true;
@@ -231,12 +251,15 @@ class Action {
     });
     if (inactive !== undefined) {
       const number = inactive.getAttribute("step-tag");
-      this.loadGuides(parseInt(number));
+      this.controlVisibility(parseInt(number));
+    } else {
+      this.controlVisibility(-1);
     }
   }
 
   showGuide(item, index, Track) {
     // Show guide
+
     const text = item.querySelector("p");
     const leftContent = item.querySelector("#left-content");
     const right = item.querySelector("#right");
@@ -264,7 +287,7 @@ class Action {
     }
 
     if (item.getAttribute("aria-checked") !== "active") {
-      checkBox.style.display = "none";      
+      checkBox.style.display = "none";
     } else if (item.getAttribute("aria-checked") === "active") {
       checker.style.display = "none";
       enclose.style.display = "block";
@@ -299,6 +322,7 @@ class Action {
         checkBox.style.display = "block";
         clearTimeout(finishLoading);
         this.loadProgress();
+        this.CheckerClicked = true;
         this.goToInActive();
       }, 600);
     });
