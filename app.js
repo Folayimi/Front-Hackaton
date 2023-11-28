@@ -12,10 +12,11 @@ class Action {
     this.NotificationMenu = document.getElementById("notif-menu");
     this.Plan = document.getElementById("trial-plan");
     this.Guide = document.getElementById("guide");
+    this.Dc = document.getElementById("dc");
     this.PersonalizedGuide = this.Guide.getElementsByTagName("li");
     this.Chevron = document.getElementById("chevron");
-    this.ShowBrandMenu = false;
-    this.ShowNotificationMenu = false;
+    this.SearchBox = document.querySelector("#search-box");
+    this.SearchBar = document.querySelector("#search-bar");
     this.CheckerClicked = false;
     // this.CheckBoxClicked = false;
     this.Progress = 0;
@@ -65,6 +66,10 @@ class Action {
       this.toggleNotificationMenu();
     });
 
+    this.SearchBox.addEventListener("click", () => {
+      this.focusSearchBar();
+    });
+
     document.addEventListener("keydown", (e) => {
       this.removeFocus(e);
     });
@@ -94,6 +99,11 @@ class Action {
     });
   }
 
+  focusSearchBar() {
+    // Automatically focus on search bar
+    this.SearchBar.focus();
+  }
+
   toggleNotificationMenu() {
     // Toggle notification menu visibility
     if (this.NotificationMenu.style.display === "none") {
@@ -121,6 +131,7 @@ class Action {
     const focusableItems = document.querySelectorAll(
       '.cnt a[tabindex="0"], li[tabindex="0"]'
     );
+
     let currentIndex = Array.from(focusableItems).indexOf(
       document.activeElement
     );
@@ -160,6 +171,7 @@ class Action {
     // Toggle brand menu visibility
     if (this.BrandMenu.style.display === "none") {
       this.BrandMenu.style.display = "flex";
+      this.Dc.focus();
     } else {
       this.BrandMenu.style.display = "none";
     }
@@ -208,7 +220,6 @@ class Action {
   loadGuides(Track) {
     // Load guides
     Array.from(this.PersonalizedGuide).forEach((listItem, i) => {
-      console.log("loading guides");
       const leftContent = listItem.querySelector("#left-content");
       const unActive = listItem.querySelector("p");
       leftContent.addEventListener("click", () => {
@@ -230,7 +241,6 @@ class Action {
 
   goToInActive() {
     // Go to inactive guide
-    console.log("going to inactive");
     let inactive;
     Array.from(this.PersonalizedGuide).some((listItem) => {
       if (listItem.getAttribute("aria-checked") !== "active") {
@@ -268,6 +278,7 @@ class Action {
       } else {
         right.style.display = "flex";
       }
+      item.focus();
     } else {
       item.className = "guide-step";
       checker.style.display = "block";
