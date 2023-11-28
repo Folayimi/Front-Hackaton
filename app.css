@@ -33,7 +33,7 @@ body {
 .profile-box > .brand-menu {
   z-index: 50;
   position: absolute;
-  transition: 0.5s;
+  transition: 0.3s;
   top: 58px;
   right: 0px;
   display: flex;
@@ -60,7 +60,7 @@ body {
 .header > .notif-menu {
   position: absolute;
   z-index: 50;
-  transition: 0.5s;
+  transition: 0.3s;
   top: 70px;
   right: 16px;
   width: 383px;
@@ -78,6 +78,18 @@ body {
   .header > .notif-menu {
     width: 90vw;
   }
+}
+
+.notif-menu .focus {
+  outline: none;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.notif-menu .focus:focus {
+  box-shadow: 0px 0px 0px 2px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .notif-menu > .alerts {
@@ -366,6 +378,14 @@ body {
 
 .trial > .cancel {
   cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+.trial > .cancel:focus {
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .content > .setup-guide {
@@ -409,6 +429,15 @@ body {
   font-size: 14px;
 }
 
+.left > p:focus {
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 0px 2px #005bd3, 0px 0px 0px 1px #000;
+}
+
 .left > .base {
   display: flex;
   gap: 8px;
@@ -448,6 +477,7 @@ body {
 
 .top > .chevron:focus {
   background: #e3e3e3;
+  box-shadow: 0px 0px 0px 3px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .top > .chevron:hover {
@@ -457,10 +487,12 @@ body {
 .setup-guide > .guide {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 
 .guide > .guide-step {
+  transition: 0.3s;
   width: 100%;
   display: flex;
   align-items: center;
@@ -520,6 +552,12 @@ body {
   background: #e3e3e3;
 }
 
+.left .dashed-circle:focus {
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #005bd3, 0px 0px 0px 1px #000;
+}
+
 .left .loader {
   width: 24px;
   filter: invert(100%);
@@ -533,12 +571,20 @@ body {
 }
 
 .guide > .guide-step-active {
+  transition: 0.3s;
   display: flex;
   padding: 8px 8px 12px 8px;
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
   background: #f3f3f3;
+  border: none;
+  outline: none;
+}
+
+.guide-step-active:focus {
+  box-shadow: 0px 0px 0px 2px #005bd3, 0px 0px 0px 1px #fff,
+    0px -1px 0px 0px #b5b5b5 inset;
 }
 
 .guide-step-active .check-box {
@@ -562,7 +608,8 @@ body {
   gap: 8px;
 }
 
-.left > .left-content {
+.left .left-content {
+  transition: 0.3s;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -570,6 +617,14 @@ body {
   font-weight: 500;
   color: var(--font-mid-2, #616161);
   cursor: pointer;
+}
+
+.left .left-content:focus {
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 0px 2px #005bd3, 0px 0px 0px 1px #000;
 }
 
 .left-content .learn-more {

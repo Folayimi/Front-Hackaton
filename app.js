@@ -50,13 +50,21 @@ class Action {
   }
 
   addEventListeners() {
-    // Add event listeners here
+    // Event listeners here
     window.addEventListener("resize", () => {
-      this.handleWindowResize();
+      this.initializeUI();
+    });
+
+    window.addEventListener("resize", () => {
+      this.imagePresence();
     });
 
     this.NotificationBox.addEventListener("click", () => {
       this.toggleNotificationMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      this.removeFocus(e);
     });
 
     this.BrandMenu.addEventListener("keydown", (e) => {
@@ -84,19 +92,6 @@ class Action {
     });
   }
 
-  handleWindowResize() {
-    // Handle window resize event
-    if (window.innerWidth < 768) {
-      this.Name.style.display = "none";
-      this.BrandLogo.src =
-        "https://crushingit.tech/hackathon-assets/shopify-icon.svg";
-    } else {
-      this.Name.style.display = "block";
-      this.BrandLogo.src =
-        "https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg";
-    }
-  }
-
   toggleNotificationMenu() {
     // Toggle notification menu visibility
     if (this.NotificationMenu.style.display === "none") {
@@ -109,6 +104,13 @@ class Action {
       this.NotificationMenu.style.display === "flex"
     ) {
       this.BrandMenu.style.display = "none";
+    }
+  }
+
+  removeFocus(e) {
+    // Remove focus
+    if (e.key === "Escape") {
+      document.activeElement.blur();
     }
   }
 
@@ -181,10 +183,10 @@ class Action {
     // Toggle guide visibility
     if (this.Guide.style.display === "none") {
       this.Guide.style.display = "flex";
-      this.Chevron.style.transform = "rotate(180deg)";
+      this.Chevron.style.transform = "rotate(-180deg)";
     } else {
       this.Guide.style.display = "none";
-      this.Chevron.style.transform = "rotate(-0deg)";
+      this.Chevron.style.transform = "rotate(0deg)";
     }
   }
 
