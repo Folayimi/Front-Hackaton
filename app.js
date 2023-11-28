@@ -230,7 +230,6 @@ class Action {
   loadGuides(Track) {
     // Load guides
     Array.from(this.PersonalizedGuide).forEach((listItem, i) => {
-      console.log("loading guides");
       const leftContent = listItem.querySelector("#left-content");
       const unActive = listItem.querySelector("p");
       this.showGuide(listItem, i, Track);

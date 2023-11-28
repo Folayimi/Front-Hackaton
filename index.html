@@ -37,10 +37,16 @@
               fill="#B5B5B5"
             />
           </svg>
-          <input type="text" placeholder="Search" id="search-bar"/>
+          <input type="text" placeholder="Search" id="search-bar" />
         </form>
+        <!-- Menu button -->
         <div class="menuR">
-          <button class="notif-box" id="notif-box" name="notification-button" aria-expanded="false">
+          <button
+            class="notif-box"
+            id="notif-box"
+            aria-label="notification-button"
+            aria-expanded="false"
+          >
             <div class="notif-menu" id="notif-menu" style="display: none">
               <div
                 style="
@@ -53,7 +59,11 @@
               >
                 <p>Alerts</p>
                 <div class="notif-cont">
-                  <div class="focus" tabindex="0">
+                  <div
+                    class="focus"
+                    aria-label="notificaiton-menu"
+                    tabindex="0"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -75,7 +85,11 @@
                       />
                     </svg>
                   </div>
-                  <div class="focus" tabindex="0">
+                  <div
+                    class="focus"
+                    aria-label="notification-check"
+                    tabindex="0"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -123,7 +137,7 @@
             name="brand-menu-button"
             aria-haspopup="true"
             aria-expanded="false"
-            aria-controls="brand-menu-button"
+            aria-label="brand-menu-button"
           >
             <div
               class="brand-menu"
@@ -132,7 +146,7 @@
               role="menu"
               id="brand-menu"
             >
-              <ul class="cnt" aria-expanded="true">
+              <ul class="cnt" aria-labelledby="profile-box">
                 <li tabindex="0" id="dc" role="menu-item">
                   <div
                     style="
@@ -286,7 +300,7 @@
           </div>
           <div class="trial">
             <button class="trial-plan" id="trial-plan">Select a plan</button>
-            <button class="cancel" id="cancel">
+            <button class="cancel" id="cancel" aria-label="close-plan">
               <svg
                 width="20"
                 height="20"
@@ -302,7 +316,7 @@
             </button>
           </div>
         </div>
-        <div class="setup-guide">
+        <div class="setup-guide" tabindex="0">
           <div class="top">
             <div class="left">
               <div class="dscrb">
@@ -327,7 +341,11 @@
                 </div>
               </div>
             </div>
-            <button class="chevron" id="chevron">
+            <button
+              class="chevron"
+              id="chevron"
+              aria-label="button-to-show-guide-steps"
+            >
               <svg
                 width="20"
                 height="20"
@@ -358,8 +376,13 @@
                   id="dashed-circle"
                   tabindex="0"
                   style="display: flex; width: 24px"
+                  aria-label="unchecked-button"
                 ></button>
-                <button id="enclose" class="enclose">
+                <button
+                  id="enclose"
+                  class="enclose"
+                  aria-label="checked-button"
+                >
                   <img
                     src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
                     class="loader"
@@ -452,9 +475,14 @@
                   class="dashed-circle"
                   id="dashed-circle"
                   tabindex="0"
+                  aria-label="unchecked-button"
                   style="display: flex; width: 24px"
                 ></button>
-                <button id="enclose" class="enclose">
+                <button
+                  id="enclose"
+                  class="enclose"
+                  aria-label="checked-button"
+                >
                   <img
                     src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
                     class="loader"
@@ -548,9 +576,14 @@
                   class="dashed-circle"
                   id="dashed-circle"
                   tabindex="0"
+                  aria-label="unchecked-button"
                   style="display: flex; width: 24px"
                 ></button>
-                <button id="enclose" class="enclose">
+                <button
+                  id="enclose"
+                  class="enclose"
+                  aria-label="checked-button"
+                >
                   <img
                     src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
                     class="loader"
@@ -641,9 +674,14 @@
                   class="dashed-circle"
                   id="dashed-circle"
                   tabindex="0"
+                  aria-label="unchecked-button"
                   style="display: flex; width: 24px"
                 ></button>
-                <button id="enclose" class="enclose">
+                <button
+                  id="enclose"
+                  class="enclose"
+                  aria-label="checked-button"
+                >
                   <img
                     src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
                     class="loader"
@@ -734,9 +772,14 @@
                   class="dashed-circle"
                   id="dashed-circle"
                   tabindex="0"
+                  aria-label="unchecked-button"
                   style="display: flex; width: 24px"
                 ></button>
-                <button id="enclose" class="enclose">
+                <button
+                  id="enclose"
+                  class="enclose"
+                  aria-label="checked-button"
+                >
                   <img
                     src="https://crushingit.tech/hackathon-assets/icon-spinner.svg"
                     class="loader"

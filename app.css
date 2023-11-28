@@ -388,6 +388,9 @@ body {
 
 .trial > .cancel {
   transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background: transparent;
   border: none;
