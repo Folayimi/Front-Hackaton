@@ -17,16 +17,14 @@ class Action {
     this.Chevron = document.getElementById("chevron");
     this.SearchBox = document.querySelector("#search-box");
     this.SearchBar = document.querySelector("#search-bar");
-    this.CheckerClicked = false;
-    // this.CheckBoxClicked = false;
+    this.CheckerClicked = false;    
     this.Progress = 0;
     this.Track = 0;
 
     this.initializeUI();
     this.addEventListeners();
     this.loadProgress();
-    this.imagePresence();
-    // this.controlVisibility();
+    this.imagePresence();    
   }
 
   initializeUI() {
