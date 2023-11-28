@@ -207,8 +207,8 @@ class Action {
 
   loadGuides(Track) {
     // Load guides
-    console.log("loading guides");
     Array.from(this.PersonalizedGuide).forEach((listItem, i) => {
+      console.log("loading guides");
       const leftContent = listItem.querySelector("#left-content");
       const unActive = listItem.querySelector("p");
       leftContent.addEventListener("click", () => {
@@ -219,26 +219,16 @@ class Action {
         this.Track = i;
         this.loadGuides(this.Track);
       });
-      leftContent.removeEventListener("click", () => {
-        this.Track = i;
-        this.loadGuides(this.Track);
-      });
-      unActive.removeEventListener("click", () => {
-        this.Track = i;
-        this.loadGuides(this.Track);
-      });
       this.showGuide(listItem, i, Track);
     });
   }
 
   controlVisibility(Track) {
-    if (this.CheckerClicked) {
-      this.loadGuides(Track);
-      this.CheckerClicked = false;
-    }
+    this.loadGuides(Track);
+    this.CheckerClicked = false;
   }
 
-  goToInActive () {
+  goToInActive() {
     // Go to inactive guide
     console.log("going to inactive");
     let inactive;
@@ -323,7 +313,9 @@ class Action {
         clearTimeout(finishLoading);
         this.loadProgress();
         this.CheckerClicked = true;
-        this.goToInActive();
+        if (this.CheckerClicked) {
+          this.goToInActive();
+        }
       }, 600);
     });
   }
